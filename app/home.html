@@ -1,0 +1,50 @@
+<mat-card class="text-center pomodoro">
+  <div class="row">
+    <div class="col">
+    <h4>Work Time</h4>
+    <button class="btn btn-secondary" [disabled]="wtime.minutes==1" (click)="decreaseTime('w')">-</button>
+    <span class="time"><span class="minute">{{wtime.minutes | twodigit}}</span>:{{wtime.seconds | twodigit}}</span>
+    <button class="btn btn-secondary" (click)="increaseTime('w')">+</button>
+    </div>
+    <div class="col">
+    <h4>Break Time</h4>
+    <button class="btn btn-secondary" [disabled]="btime.minutes==1" (click)="decreaseTime('b')">-</button>
+    <span class="time"><span class="minute">{{btime.minutes | twodigit}}</span>:{{btime.seconds | twodigit}}</span>
+    <button class="btn btn-secondary" (click)="increaseTime('b')">+</button>
+    </div>
+  </div>
+  <br>
+ <div *ngIf="brtime; else elseBlock"><h4>Break Time!</h4></div>
+<ng-template #elseBlock><h4>Work Time!</h4></ng-template>
+  <app-timer [timer]="time" [br]="brtime"></app-timer>
+  <div class="actions">
+    <div class="row">
+      <div class="col">
+        <button mat-raised-button color="primary" (click)="start()" [disabled]="running">Start</button>
+      </div>
+      <div class="col">
+        <button mat-raised-button color="primary" (click)="stop()" [disabled]="!running">Stop</button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+
+
+<!-- Copyright 2019 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
+    <mat-card class="pomodoro mt-4">
+    <h4>Things to implement</h4>
+    <mat-selection-list>
+      <mat-list-option >
+        Color scheme based on timer
+      </mat-list-option>
+      <mat-list-option >
+        Progress bar to indicate progress
+      </mat-list-option>
+      <mat-list-option >
+        Progress bar to take inputs
+      </mat-list-option>
+    </mat-selection-list>
+    </mat-card>
